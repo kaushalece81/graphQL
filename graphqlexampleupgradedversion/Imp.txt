@@ -1,0 +1,360 @@
+graphql client  altair graphql client
+chrome plugin https://chrome.google.com/webstore/detail/altair-graphql-client/flnheeellpciglgpaodhkhmapeljopja?hl=en
+
+
+graphiql url :  http://localhost:8080/graphiql
+
+query {
+  firstQuery
+}
+
+
+altair graphql client    : select POST method
+http://localhost:8080/graphql     : default url for graphql
+{
+  firstQuery
+  secondQuery
+}
+
+{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+}
+
+{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+  fullNameJson(sampleJsonRequest : {
+    firstName:"Kaushlender"
+    lastName: "Sharma"}
+  )
+}
+
+
+altair we can set headers  in graphiql no option to set headers
+# default url for graphiql is http://localhost:8080/graphiql  new url http://localhost:8080/app-ui
+graphiql.mapping=/app-ui
+# default url for graphql is http://localhost:8080/graphql new url http://localhost:8080/student-service
+graphql.servlet.mapping=/student-service
+
+spring.datasource.url=jdbc:mysql://localhost:3306/spring
+spring.datasource.username=root
+spring.datasource.password=P@ssw0rd
+
+Altair Graphql client
+http://localhost:8080/graphql
+{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+  fullNameJson(sampleJsonRequest : {
+	firstName:"Kaushal"
+    lastName: "Sharmaaaa"}
+  )
+  student( id : 1){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects{
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+learningSubjects{
+to add allfields shortcut ctrl + shift + enter
+}
+
+For Data Filters=======================
+
+{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+  fullNameJson(sampleJsonRequest : {
+	firstName:"Kaushal"
+    lastName: "Sharmaaaa"}
+  )
+  student( id : 1){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : MySQL){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+  fullNameJson(sampleJsonRequest : {
+	firstName:"Kaushal"
+    lastName: "Sharmaaaa"}
+  )
+  student( id : 1){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : All){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+
+# Welcome to Altair GraphQL Client.
+# You can send your request using CmdOrCtrl + Enter.
+
+# Enter your graphQL query here.
+query{
+  firstQuery
+  secondQuery
+  fullName(firstName:"Kaushal", lastName: "Sharma")
+  fullNameJson(sampleJsonRequest : {
+	firstName:"Kaushal"
+    lastName: "Sharmaaaa"}
+  )
+  student( id : 1){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : All){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+
+Note
+If Error  com.coxautodev.graphql.tools.SchemaClassScannerError:
+No Root resolvers for mutation type 'Mutation' found!  Provide one or more com.coxautodev.graphql.tools.GraphQLMutationResolver to the builder.
+Then add in component scan GraphqlExampleApplication   "com.example.mutation"
+
+
+ctrl +shift + enter for all fields
+
+# Welcome to Altair GraphQL Client.
+# You can send your request using CmdOrCtrl + Enter.
+
+# Enter your graphQL query here.
+# Welcome to Altair GraphQL Client.
+# You can send your request using Cmd Or Ctrl + Enter.
+
+# Enter your graphQL query here.
+mutation{
+  createStudent(createStudentRequest : {
+    firstName : "Raghu"
+    lastName : "Sharma"
+    email : "raghu@gmail.com"
+    street : "mohan garden"
+    city : "Bangalore"
+    subjectsLearning : [{
+      subjectName : "java"
+      marksObtained : 60.0
+    },
+    {
+      subjectName : "mongodb"
+      marksObtained : 50.0
+    }]
+  })
+
+  {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects(subjectNameFilter : All) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+
+}
+
+GraphQL variables
+=========================
+
+In Query section
+
+query student($id : Long) {
+  student( id : $id){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : All){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+
+In variable section
+
+{
+  "id": 1
+}
+
+========================================================
+In Query Mutation section
+
+mutation  createStudent($createStudentRequest : CreateStudentRequest) {
+  createStudent(createStudentRequest : $createStudentRequest)
+
+  {
+    id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects(subjectNameFilter : All) {
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+
+}
+
+In variable section
+
+{
+  "createStudentRequest" : {
+    "firstName" : "Raghu",
+    "lastName" : "Sharma",
+    "email" : "raghu@gmail.com",
+    "street" : "mohan garden",
+    "city" : "Bangalore",
+    "subjectsLearning" : [
+      {
+      "subjectName" : "java",
+      "marksObtained" : 60.0
+    	},
+    	{
+      "subjectName" : "mongodb",
+      "marksObtained" : 50.0
+   	 	}
+    ]
+  }
+}
+
+
+====================================================
+Query with multiple graphql variables
+
+query section=========
+query student($id : Long, $subjectName : SubjectNameFilter) {
+  student( id : $id){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : $subjectName){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+graphql section========
+{
+  "id": 1,
+  "subjectName" : "Java"
+}
+======================================================================
+Upgrade version com.graphql-java-kickstart  from com.graphql-java
+=======================================================================
+	implementation 'com.graphql-java-kickstart:graphql-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0'
+	implementation 'com.graphql-java-kickstart:graphql-java-tools:11.0.1'
+
+upgraded version need to reimport GraphQLResolver class
+ in Query, StudentResponseResolver and Mutation class
+Use Int instead of Long in schema file query.graphqls
+id : Int
+
+query section=========
+query student($id : Int) {
+  student( id : $id){
+     id
+    firstName
+    lastName
+    email
+    street
+    city
+    learningSubjects (subjectNameFilter : All){
+      id
+      subjectName
+      marksObtained
+    }
+    fullName
+  }
+}
+
+graphql section========
+
+{
+  "id": 1,
+  "subjectName" : "Java"
+}
+
+
+server.port = 8080
+#Fot heroku environment variable needed to start application on heroku
+#server.port = ${PORT:8080}
+# default url for graphiql is http://localhost:8080/graphiql  new url http://localhost:8080/app-ui  gives 400 not found
+#graphiql.mapping=/app-ui
+# default url for graphql is http://localhost:8080/graphql new url http://localhost:8080/student-service
+# graphql.servlet.mapping=/student-service
+# graphql.servlet.enabled=true
+# graphql.servlet.cors-enabled=true
+
+spring.datasource.url=jdbc:mysql://localhost:3306/spring
+spring.datasource.username=root
+spring.datasource.password=P@ssw0rd
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true

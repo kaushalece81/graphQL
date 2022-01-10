@@ -1,0 +1,3 @@
+First Start graphQL server application
+
+Then start this application graphql client

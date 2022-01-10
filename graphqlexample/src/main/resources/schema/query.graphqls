@@ -1,0 +1,44 @@
+type Query{
+    firstQuery : String
+    secondQuery : String
+    fullName (firstName : String, lastName : String): String
+    fullNameJson (sampleJsonRequest : SampleJsonRequest) : String
+    student ( id : Long) : StudentResponse
+}
+
+type StudentResponse{
+    id : Long
+    firstName : String
+    lastName : String
+    email : String
+    street : String
+    city : String
+    """
+    learningSubjects : [SubjectResponse]
+    For Data Filter
+    """
+    learningSubjects(subjectNameFilter : SubjectNameFilter) : [SubjectResponse]
+    fullName : String
+}
+
+type SubjectResponse {
+    id : Long
+    subjectName : String
+    marksObtained : Float
+}
+
+enum SubjectNameFilter {
+    All,
+    Java,
+    MySQL,
+    MongoDB
+}
+
+input SampleJsonRequest {
+
+"""
+firstName cann be null so put exclamation mark
+"""
+    firstName : String!
+    lastName : String
+}
