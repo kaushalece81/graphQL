@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "bfb1194b-b56c-4e96-9538-5aef6b293f44",
+		"name": "GraphQLStudent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n  firstQuery\r\n  secondQuery\r\n  fullName(firstName:\"Kaushal\", lastName: \"Sharma\")\r\n  fullNameJson(sampleJsonRequest : {\r\n\tfirstName:\"Kaushal\"\r\n    lastName: \"Sharmaaaa\"}\r\n  )\r\n  student( id : 1){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : All){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query_StudentService",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n  firstQuery\r\n  secondQuery\r\n  fullName(firstName:\"Kaushal\", lastName: \"Sharma\")\r\n  fullNameJson(sampleJsonRequest : {\r\n\tfirstName:\"Kaushal\"\r\n    lastName: \"Sharmaaaa\"}\r\n  )\r\n  student( id : 1){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : All){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student-service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryWithGrapgQLVariable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query student($id : Long, $subjectName : SubjectNameFilter) {\r\n  student( id : $id){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : $subjectName){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": "{\r\n  \"id\": 1,\r\n  \"subjectName\" : \"Java\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student-service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryWithGrapgQLMultipleVariable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query student($id : Long) {\r\n  student( id : $id){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : All){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": "{\r\n  \"id\": 1\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student-service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryWithGrapgQLUpgradedMultipleVariable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query student($id : Int) {\r\n  student( id : $id){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : All){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": "{\r\n  \"id\": 1\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryWithGrapgQLUpgradedMultipleVariableUrLNew",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query student($id : Int) {\r\n  student( id : $id){\r\n     id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects (subjectNameFilter : All){\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n}\r\n",
+						"variables": "{\r\n  \"id\": 1\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student-service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student-service"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mutation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n  createStudent(createStudentRequest : {\r\n    firstName : \"Raghu\"\r\n    lastName : \"Sharma\"\r\n    email : \"raghu@gmail.com\"\r\n    street : \"mohan garden\"\r\n    city : \"Bangalore\"\r\n    subjectsLearning : [{\r\n      subjectName : \"java\"\r\n      marksObtained : 60.0\r\n    },\r\n    {\r\n      subjectName : \"mongodb\"\r\n      marksObtained : 50.0\r\n    }]\r\n  })\r\n\r\n  {\r\n    id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects(subjectNameFilter : All) {\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MutationWithGraphQLVariables",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation  createStudent($createStudentRequest : CreateStudentRequest) {\r\n  createStudent(createStudentRequest : $createStudentRequest)\r\n\r\n  {\r\n    id\r\n    firstName\r\n    lastName\r\n    email\r\n    street\r\n    city\r\n    learningSubjects(subjectNameFilter : All) {\r\n      id\r\n      subjectName\r\n      marksObtained\r\n    }\r\n    fullName\r\n  }\r\n\r\n}",
+						"variables": "{\r\n  \"createStudentRequest\" : {\r\n    \"firstName\" : \"Raghu\",\r\n    \"lastName\" : \"Sharma\",\r\n    \"email\" : \"raghu@gmail.com\",\r\n    \"street\" : \"mohan garden\",\r\n    \"city\" : \"Bangalore\",\r\n    \"subjectsLearning\" : [\r\n      {\r\n      \"subjectName\" : \"java\",\r\n      \"marksObtained\" : 60.0\r\n    \t},\r\n    \t{\r\n      \"subjectName\" : \"mongodb\",\r\n      \"marksObtained\" : 50.0\r\n   \t \t}\r\n    ]\r\n  }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student-service",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student-service"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

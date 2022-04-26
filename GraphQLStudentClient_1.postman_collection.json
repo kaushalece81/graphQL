@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "e95164e9-5491-4b46-9a9c-95cd772b8ced",
+		"name": "GraphQLStudentClient",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetStudentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/api/student/get/15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"student",
+						"get",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateStudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"id\": 5,\r\n\t\"firstName\": \"Peter\",\r\n\t\"lastName\": \"John\",\r\n\t\"email\": \"peter@gmail.com\",\r\n\t\"street\": \"Down the street\",\r\n\t\"city\": \"New York\",\r\n\t\"learningSubjects\": [\r\n\t\t{\r\n\t\t\t\"id\": 10,\r\n\t\t\t\"subjectName\": \"Java\",\r\n\t\t\t\"marksObtained\": 55.0\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\": 11,\r\n\t\t\t\"subjectName\": \"PHP\",\r\n\t\t\t\"marksObtained\": 50.0\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/student/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"student",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
