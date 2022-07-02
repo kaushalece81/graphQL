@@ -9,12 +9,6 @@
 
 # Target folder
 target/
-
-*/.project
-*/.settings/
-.classpath
-*/.classpath
-nextgenui/
 **/.DS_Store
 **/.springBeans
 *.iml
