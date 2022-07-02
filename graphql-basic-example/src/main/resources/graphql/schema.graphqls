@@ -1,0 +1,12 @@
+type Query{
+	helloWorld: String!,
+	greetingMessage(firstName : String!, lastName : String!) : String!
+	messageResponse : MessageResponse!
+	rollDice : [Int!]!
+	tossCoin : [String!]!
+}
+## comma is optional
+type MessageResponse{
+	id: ID!
+	text: String!
+}
