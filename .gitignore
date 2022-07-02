@@ -9,8 +9,7 @@
 
 # Target folder
 target/
-.project
-.settings/
+
 */.project
 */.settings/
 .classpath
