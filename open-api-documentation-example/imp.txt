@@ -24,3 +24,7 @@ So now our API documentation will be available at http://localhost:8080/swagger-
 As another example, to sort the API paths in order of their HTTP methods, we can add:
 
 springdoc.swagger-ui.operationsSorter=method
+
+
+reference
+https://lankydan.dev/documenting-a-spring-rest-api-following-the-openapi-specification
