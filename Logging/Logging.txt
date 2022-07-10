@@ -1,0 +1,12 @@
+#Logging properties
+logging.pattern.console=TIME=%d{yyyy-MM-dd HH:mm:ss} PORT=${server.port} CORRELATION_ID=%X{CORRELATION_ID} THREAD_ID=[%thread] CLASS=%C METHOD_NAME=%M %msg%n
+logging.pattern.file=TIME=%d{yyyy-MM-dd HH:mm:ss} PORT=${server.port} SERVICE=AdminGatewayService CORRELATION_ID=%X{CORRELATION_ID} THREAD_ID=[%thread] CLASS=%C METHOD_NAME=%M %msg%n
+logging.file=${HOME}/logs/dc_admin-gateway.log
+logging.file.max-size=20MB
+logging.file.max-history=2
+
+
+
+ String correlationId = CorrelationUtil.getDcCorrelationId(request);
+ 
+ https://www.tabnine.com/code/java/methods/org.slf4j.MDC/putCloseable
