@@ -7,7 +7,31 @@
 	},
 	"item": [
 		{
-			"name": "JPAExample",
+			"name": "getAuthorsWithoutDatabse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n authorsWithoutDatabase{\r\n  id\r\n  name\r\n  email\r\n  posts{\r\n    id\r\n    title\r\n    description\r\n    category\r\n    author{\r\n      id\r\n      name\r\n      email\r\n    }\r\n  }\r\n}\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAuthors",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -39,6 +63,54 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "query{\r\n    recentPosts(count: 2, offset :0){\r\n        id\r\n        title\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAuthorWithoutDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n  createAuthor(authorInput : {\r\n    name : \"kaushal\"\r\n    email : \"kaushal@gmail.com\"\r\n  })\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAuthor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n  createAuthor(authorInput : {\r\n    name : \"kaushal\"\r\n    email : \"kaushal@gmail.com\"\r\n  })\r\n}",
 						"variables": ""
 					}
 				},
