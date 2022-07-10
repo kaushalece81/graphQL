@@ -1,0 +1,4 @@
+type Mutation {
+    createAuthorWithoutDatabase(authorInput: AuthorInput): ID!
+    createAuthor(authorInput: AuthorInput): ID!
+}

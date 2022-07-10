@@ -14,11 +14,14 @@ public class AuthorGraphQLQuery implements GraphQLQueryResolver{
 
 	@Autowired
 	private AuthorService authorService;
+	
 	public List<AuthorResponse> authors() {
-		//return Collections.singletonList(AuthorResponse.builder().id(UUID.randomUUID()).name("kaushal").email("kaushal@gmail.com").build());
-		
 		// return from database
 		return authorService.getAuthors();
+	}
+	
+	public List<AuthorResponse> authorsWithoutDatabase() {
+		return Collections.singletonList(AuthorResponse.builder().id(UUID.randomUUID()).name("kaushal").email("kaushal@gmail.com").build());
 	}
 	
 }

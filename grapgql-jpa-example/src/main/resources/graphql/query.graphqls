@@ -1,0 +1,5 @@
+type Query{
+	authorsWithoutDatabase : [Author]!
+	authors : [Author]!
+	recentPosts (count : Int!, offset : Int!) : [Post]!
+}
