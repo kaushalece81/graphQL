@@ -19,4 +19,13 @@ spring.datasource.url=jdbc:h2:mem:testdb
 
 
  when I add the data.sql at the resources folder the project refuses to generate the schema.
- You can put your statements in import.sql instead of data.sql and retry. Hibernate uses this file to initialize the table.
+ You can put your statements in import.sql instead of data.sql and retry. 
+ Hibernate uses this file to initialize the table.
+ 
+ 
+ Adding support for pagination
+ schema.grapgqls file
+ recentPosts (count : Int!, offset : Int!) : [Post]!
+ 
+ offset for how many records want to skip
+ PostQueryResolver

@@ -7,4 +7,6 @@ import com.example.grapgqljpaexample.response.PostResponse;
 
 public interface PostService {
 	public List<PostResponse> getAllPostByAuthorId(UUID authorId);
+
+	public List<PostResponse> recentPosts(int count, int offset);
 }

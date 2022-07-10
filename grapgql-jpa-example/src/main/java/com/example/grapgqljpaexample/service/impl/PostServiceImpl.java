@@ -5,6 +5,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.grapgqljpaexample.model.Post;
@@ -25,6 +28,25 @@ public class PostServiceImpl implements PostService {
 					.builder()
 					.id(post.getId())
 					.authorId(authorId)
+					.description(post.getDescription())
+					.title(post.getTitle())
+					.category(post.getCategory())
+					.build();
+		}).collect(Collectors.toList());
+	}
+
+	// Pagination example
+	@Override
+	public List<PostResponse> recentPosts(int count, int offset) {
+		Pageable pageable = PageRequest.of(offset, count);
+		Page<Post> findAll = postRepository.findAll(pageable);
+		return findAll
+				.stream()
+				.map(post -> {
+			return PostResponse
+					.builder()
+					.id(post.getId())
+					.authorId(post.getAuthor().getId())
 					.description(post.getDescription())
 					.title(post.getTitle())
 					.category(post.getCategory())
