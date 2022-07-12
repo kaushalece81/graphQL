@@ -55,6 +55,54 @@
 			"response": []
 		},
 		{
+			"name": "getAuthorById",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n  authorById (id : \"5a1cd3a1-d6fe-415a-b45a-344472c29649\"){\r\n    id\r\n    name\r\n    email\r\n    posts{\r\n      id\r\n      title\r\n      description\r\n      category\r\n    }\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAuthorByIdWithQLVar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query authorById ( $id : ID!){\r\n  authorById (id : $id){\r\n    id\r\n    name\r\n    email\r\n    posts{\r\n      id\r\n      title\r\n      description\r\n      category\r\n    }\r\n  }\r\n}",
+						"variables": "{\r\n    \"id\" : \"5a1cd3a1-d6fe-415a-b45a-344472c29649\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "PaginationExample",
 			"request": {
 				"method": "POST",
@@ -111,6 +159,102 @@
 					"mode": "graphql",
 					"graphql": {
 						"query": "mutation{\r\n  createAuthor(authorInput : {\r\n    name : \"kaushal\"\r\n    email : \"kaushal@gmail.com\"\r\n  })\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPostWithoutDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n  createPostWithoutDatabase(postInput : {\r\n    title : \"Post Title\"\r\n    description : \"Post description\"\r\n    category : \"Post category\"\r\n  })\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n  createPost(postInput : {\r\n    title : \"Post Title\"\r\n    description : \"Post description\"\r\n    category : \"Post category\"\r\n    authorId : \"b8addf5e-43f8-4165-9a5f-ab73094a5b1e\"\r\n  })\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getrecentPostsWithoutDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n recentPostsWithoutDatabase(count : 1, offset : 0){\r\n  id\r\n  title\r\n  description\r\n  category\r\n}\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecentPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n recentPosts(count : 10, offset : 0){\r\n  id\r\n  title\r\n  description\r\n  category\r\n  author{\r\n    id\r\n    name\r\n\temail\r\n  }\r\n}\r\n}",
 						"variables": ""
 					}
 				},
