@@ -1,0 +1,8 @@
+mutation{
+  createPost(postInput : {
+    title : "Post Title"
+    description : "Post description"
+    category : "Post category"
+    authorId : "b8addf5e-43f8-4165-9a5f-ab73094a5b1e"
+  })
+}

@@ -1,4 +1,6 @@
 type Mutation {
     createAuthorWithoutDatabase(authorInput: AuthorInput): ID!
     createAuthor(authorInput: AuthorInput): ID!
+    createPostWithoutDatabase( postInput : PostInput!) : ID!
+    createPost( postInput : PostInput!) : ID!
 }

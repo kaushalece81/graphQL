@@ -1,6 +1,7 @@
 package com.example.grapgqljpaexample.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -10,8 +11,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.example.grapgqljpaexample.model.Author;
 import com.example.grapgqljpaexample.model.Post;
+import com.example.grapgqljpaexample.repository.AuthorRepository;
 import com.example.grapgqljpaexample.repository.PostRepository;
+import com.example.grapgqljpaexample.request.PostRequest;
 import com.example.grapgqljpaexample.response.PostResponse;
 import com.example.grapgqljpaexample.service.PostService;
 @Service
@@ -19,6 +23,9 @@ public class PostServiceImpl implements PostService {
 
 	@Autowired
 	private PostRepository postRepository;
+	
+	@Autowired
+	private AuthorRepository authorRepository;
 	
 	@Override
 	public List<PostResponse> getAllPostByAuthorId(UUID authorId) {
@@ -52,6 +59,21 @@ public class PostServiceImpl implements PostService {
 					.category(post.getCategory())
 					.build();
 		}).collect(Collectors.toList());
+	}
+
+	@Override
+	public Post createPost(PostRequest postRequest) {
+		Optional<Author> author = authorRepository.findById(postRequest.getAuthorId());
+		if(!author.isPresent()) {
+			throw new RuntimeException("Author Id does not exist");
+		}
+		Post post = Post.builder()
+				.title(postRequest.getTitle())
+				.description(postRequest.getDescription())
+				.category(postRequest.getCategory())
+				.author(author.get())
+				.build();
+		return postRepository.saveAndFlush(post);
 	}
 
 }

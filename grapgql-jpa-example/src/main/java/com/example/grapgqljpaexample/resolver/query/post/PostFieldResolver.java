@@ -1,4 +1,4 @@
-package com.example.grapgqljpaexample.query;
+package com.example.grapgqljpaexample.resolver.query.post;
 
 import java.util.UUID;
 

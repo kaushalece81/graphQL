@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.grapgqljpaexample.model.Author;
 import com.example.grapgqljpaexample.repository.AuthorRepository;
+import com.example.grapgqljpaexample.request.AuthorRequest;
 import com.example.grapgqljpaexample.response.AuthorResponse;
 import com.example.grapgqljpaexample.service.AuthorService;
 
@@ -42,6 +43,12 @@ public class AuthorServiceImpl implements AuthorService{
 				.email(author.getEmail())
 				.name(author.getName())
 				.build();
+	}
+
+	@Override
+	public Author createAuthor(AuthorRequest authorRequest) {
+		 Author author = Author.builder().email(authorRequest.getEmail()).name(authorRequest.getName()).build();
+		return authorRepository.saveAndFlush(author);
 	}
 
 }
