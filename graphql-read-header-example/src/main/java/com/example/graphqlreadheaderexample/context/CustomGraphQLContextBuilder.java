@@ -18,13 +18,14 @@ public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder
     public GraphQLContext build(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
         String correlationId = httpServletRequest.getHeader("correlation-id");
+        String userName = httpServletRequest.getHeader("user-name");
 
         DefaultGraphQLServletContext servletContext = DefaultGraphQLServletContext.createServletContext()
                 .with(httpServletRequest)
                 .with(httpServletResponse)
                 .build();
 
-        return new CustomGraphQLContext(correlationId, servletContext);
+        return new CustomGraphQLContext(correlationId, userName , servletContext);
     }
 
     @Override

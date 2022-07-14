@@ -1,7 +1,5 @@
 package com.example.graphqlreadheaderexample.resolver.query;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -25,11 +23,16 @@ private static final Logger logger = LoggerFactory.getLogger(BasicGraphQLQuery.c
 	public String greetingMessage(String firstName, String lastName, DataFetchingEnvironment dataFetchingEnvironment) {
 		CustomGraphQLContext context = dataFetchingEnvironment.getContext();
 		String correlationId = context.getCorrelationId();
-		logger.info("Header data correlationId: {}", correlationId);
+		String userName = context.getUserName();
+		logger.info("Header data GreetingMessage correlationId: {} , userName : {}", correlationId, userName);
 		return String.format("Hello %s  %s", firstName, lastName) ;
 	}
 	
-	public MessageResponse getMessageResponse() {
+	public MessageResponse getMessageResponse(DataFetchingEnvironment dataFetchingEnvironment) {
+		CustomGraphQLContext context = dataFetchingEnvironment.getContext();
+		String correlationId = context.getCorrelationId();
+		String userName = context.getUserName();
+		logger.info("Header data Message correlationId: {} , userName : {}", correlationId, userName);
 		return MessageResponse.builder().id(UUID.randomUUID()).text("GraphQL is Awesome").build();
 	}
 }

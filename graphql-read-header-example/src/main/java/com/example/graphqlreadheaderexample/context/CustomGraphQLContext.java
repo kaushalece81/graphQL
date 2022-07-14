@@ -17,13 +17,15 @@ import java.util.Optional;
 public class CustomGraphQLContext implements GraphQLServletContext {
 
     private final String correlationId;
+    private final String userName;
     private final GraphQLServletContext context;
 
-	public CustomGraphQLContext(String correlationId, GraphQLServletContext context) {
+
+	public CustomGraphQLContext(String correlationId, String userName, GraphQLServletContext context) {
 		this.correlationId = correlationId;
+		this.userName = userName;
 		this.context = context;
 	}
-
     @Override
     public List<Part> getFileParts() {
         return context.getFileParts();
@@ -53,5 +55,6 @@ public class CustomGraphQLContext implements GraphQLServletContext {
     public @NonNull DataLoaderRegistry getDataLoaderRegistry() {
         return context.getDataLoaderRegistry();
     }
+
 
 }
