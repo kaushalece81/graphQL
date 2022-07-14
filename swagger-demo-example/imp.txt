@@ -16,7 +16,7 @@ Cannot invoke "org.springframework.web.servlet.mvc.condition.PatternsRequestCond
 
 Only adding @EnableWebMvc in main class should resolve the problem:
 
-
+swagger config class implements WebMvcConfigurer   
 // this method is added to resolve error
 	//No mapping for GET /swagger-ui.html
 	@Override
@@ -28,3 +28,6 @@ Only adding @EnableWebMvc in main class should resolve the problem:
         registry.addResourceHandler("/webjars/**")
         .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
+    
+    swagger working with 2.9.2
+    swagger not working with 3.0.0
