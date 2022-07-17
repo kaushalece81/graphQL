@@ -1,0 +1,21 @@
+ https://github.com/graphql-java/graphql-java-extended-validation 
+
+http://localhost:8080/playground
+<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-java-extended-validation</artifactId>
+			<version>16.0.0</version>
+		</dependency>
+
+compatible with only graphql-java-extended-validation
+
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.6</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+create custom directive
+		 
+		
