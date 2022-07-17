@@ -1,0 +1,7 @@
+ type Customer {
+ birthDate : Date!
+ workStartTime : Time!
+ bornAt : DateTime!
+ phoneNumber : PhoneNumber!
+ profileLink : SocialMediaLink!
+}

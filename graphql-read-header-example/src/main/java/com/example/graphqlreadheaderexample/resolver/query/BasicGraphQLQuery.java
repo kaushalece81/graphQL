@@ -11,6 +11,7 @@ import com.example.graphqlreadheaderexample.response.MessageResponse;
 
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
+
 @Component
 public class BasicGraphQLQuery implements GraphQLQueryResolver{
 
