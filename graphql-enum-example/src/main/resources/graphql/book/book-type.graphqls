@@ -1,0 +1,5 @@
+type Book{
+	id : String
+	name : String
+	category : Category
+}

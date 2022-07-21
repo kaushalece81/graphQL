@@ -1,0 +1,3 @@
+type Mutation{
+	createBook(name : String, category : Category) : Book
+}

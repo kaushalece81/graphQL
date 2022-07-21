@@ -1,7 +1,5 @@
 package com.example.customscalaremail.response;
 
-import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

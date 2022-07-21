@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "54b39d61-fe56-4389-a4b3-fec3ce3a31ee",
+		"name": "GraphQLEnumExample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4600019"
+	},
+	"item": [
+		{
+			"name": "GetBookEnumExample",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\r\n   book{\r\n       id\r\n       name\r\n       category\r\n   }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBookEnumExample",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation{\r\n   createBook(name : \"Java By Example\", category : FANTASY){\r\n       id\r\n       name\r\n       category\r\n   }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBookEnumExampleQLVar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation createBook($name : String, $category : Category){\r\n   createBook(name : $name, category : $category){\r\n       id\r\n       name\r\n       category\r\n   }\r\n}",
+						"variables": "{\r\n    \"name\" : \"Java By Example\",\r\n    \"category\" : \"FANTASY\"\r\n}"
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/graphql",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
