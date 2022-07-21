@@ -1,0 +1,72 @@
+https://regex101.com/library
+
+https://chrome.google.com/webstore/detail/graphql-query-generator/jmdpimbhelkmbpgdkjgapkegfapaapej/related
+
+https://www.tutorialspoint.com/checking-for-valid-email-address-using-regular-expressions-in-java
+
+success scenario
+
+query{
+    customer (email : "kaushal@gmail.com"){
+        email
+    }
+}
+
+with QL var
+
+query customer($email : Email!){
+    customer (email : $email){
+        email
+    }
+}
+
+
+ql var
+{
+    "email" : "kaushal@gmail.com"
+}
+
+
+Fail scenario
+
+query{
+    customer (email : "kaushal@.com"){
+        email
+    }
+    }
+    
+    ql var
+    
+    query customer($email : Email!){
+    customer (email : $email){
+        email
+    }
+    }
+    {
+    "email" : "kaushal"
+	}
+
+	
+	
+	Coercing values​
+The real work in any custom scalar implementation is the graphql.schema.Coercing implementation. This is responsible for 3 functions
+
+parseValue - takes a variable input object and converts into the Java runtime representation
+parseLiteral - takes an AST literal graphql.language.Value as input and converts into the Java runtime representation
+serialize - takes a Java object and converts it into the output shape for that scalar
+So your custom scalar code has to handle 2 forms of input (parseValue / parseLiteral) and 1 form of output (serialize).
+
+Imagine this query, which uses variables, AST literals and outputs our scalar type email.
+
+mutation Contact($mainContact: Email!) {
+  makeContact(mainContactEmail: $mainContact, backupContactEmail: "backup@company.com") {
+    id
+    mainContactEmail
+  }
+}
+Our custom Email scalar will
+
+be called via parseValue to convert the $mainContact variable value into a runtime object
+be called via parseLiteral to convert the AST graphql.language.StringValue "backup@company.com" into a runtime object
+be called via serialise to turn the runtime representation of mainContactEmail into a form ready for output
+​
