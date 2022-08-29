@@ -1,0 +1,60 @@
+diff gradle vs maven
+https://gradle.org/maven-vs-gradle/
+
+gradle build --scan
+
+demo gradle
+Run particular task
+gradle -q hello
+gradle -q upper
+gradlew -q upper
+task upper << {
+   String expString = 'TUTORIALS point'
+   println "Original: " + expString
+   println "Upper case: " + expString.toUpperCase()
+}
+
+Error : Could not find method leftShift() for arguments
+
+To solve this error, change << with doLast like this.
+task upper{
+	doLast {
+   	String expString = 'TUTORIALS point'
+   	println "Original: " + expString
+   	println "Upper case: " + expString.toUpperCase()
+   }
+}
+
+
+Left shift operator represent's doLast { }.
+
+<< was deprecated in Gradle 4.x and removed in Gradle 5.0
+
+gradlew build
+gradle build
+
+gradlew clean build
+gradle clean build
+
+
+list all gradle tasks
+gradle tasks
+
+gradle -q  copyFilesFromOneDirectoryToOtherDirectory
+
+D:\practiceGit\graphQL\gradle-example\build\reports
+D:\practiceGit\graphQL\gradle-example\build\archived
+
+
+
+convert maven project to gradle project
+==========================================
+go to directory where pom.xml exist
+gradle init
+
+Found a Maven build. Generate a Gradle build from this? (default: yes) [yes, no] yes
+
+Select build script DSL:
+  1: Groovy
+  2: Kotlin
+Enter selection (default: Groovy) [1..2]

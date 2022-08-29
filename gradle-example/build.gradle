@@ -1,0 +1,79 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.3'
+	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	id 'java'
+}
+
+group = '${project_group}'
+version = "${project_version}"
+sourceCompatibility = "${java_version}"
+//group = 'com.example'
+//version = '0.0.1-SNAPSHOT'
+//sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+task hello {
+	description = 'This is my custom task hello'
+ doFirst {
+   println 'Task started'
+  }
+  doLast {
+   println 'Task Completed'
+  }
+}
+
+task upper {
+description = 'This is my custom task upper'
+    doLast {
+   String expString = 'TUTORIALS point'
+   println "Original: " + expString
+   println "Upper case: " + expString.toUpperCase()
+   }
+}
+
+task count {
+description = 'This is my custom task count'
+doLast {
+   4.times { 
+    println "Time: $it " 
+    println "java_version: ${java_version} " 
+    println "project_version: ${project_version} " 
+   }
+   }
+}
+
+task taskA{
+ println "Task A Executed" 
+}
+
+task taskB(dependsOn : taskA){
+ println "Task B Executed which depends on taskA" 
+}
+
+
+task copyFilesFromOneDirectoryToOtherDirectory(type: Copy){
+ println "$buildDir" 
+ from "$buildDir/reports"
+ into "$buildDir/archived"
+}
