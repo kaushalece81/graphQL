@@ -77,3 +77,14 @@ task copyFilesFromOneDirectoryToOtherDirectory(type: Copy){
  from "$buildDir/reports"
  into "$buildDir/archived"
 }
+
+task taskIfElse{
+int a=101
+	if(a<100){
+	 println "a: $a " 
+	 }else{
+	  println "a is greater than 100 " 
+	 }
+	
+
+}
