@@ -39,6 +39,9 @@ gradle clean build
 
 list all gradle tasks
 gradle tasks
+gradle tasks --all
+
+gradle bootRun
 
 gradle -q  copyFilesFromOneDirectoryToOtherDirectory
 
