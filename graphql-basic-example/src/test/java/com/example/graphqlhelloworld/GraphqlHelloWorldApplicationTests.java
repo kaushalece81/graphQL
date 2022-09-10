@@ -3,11 +3,11 @@ package com.example.graphqlhelloworld;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class GraphqlHelloWorldApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//@SpringBootTest
+//class GraphqlHelloWorldApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}

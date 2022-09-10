@@ -1,3 +1,10 @@
+/*
+ * Copyright 2022, Kaushal Company
+ *
+ * @author kaushlender sharma
+ *
+ * MessageResponse.java
+ */
 package com.example.graphqlhelloworld.response;
 
 import java.util.UUID;
@@ -12,6 +19,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageResponse {
-	private UUID id;
-	private String text;
+    private UUID id;
+    private String text;
 }

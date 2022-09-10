@@ -1,0 +1,84 @@
+reference https://github.com/pshindals9929/checkstyle/blob/master/pom.xml
+https://github.com/bharath411/hcl
+
+https://www.youtube.com/watch?v=aSCUyUuPHuM
+
+
+check style
+
+https://maven.apache.org/plugins/maven-checkstyle-plugin/
+
+usage section
+https://maven.apache.org/plugins/maven-checkstyle-plugin/usage.html
+
+mvn checkstyle:checkstyle
+
+copy reporting plugin and add in pom.xml below </build> tag
+
+<reporting>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.1.2</version>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>checkstyle</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+        </plugin>
+      </plugins>
+    </reporting>
+    
+    
+    run project as maven build  
+    goal   clean site
+    apply and run
+    
+    if we get error as below
+    
+    [WARNING] Error injecting: org.apache.maven.report.projectinfo.CiManagementReport
+java.lang.NoClassDefFoundError: org/apache/maven/doxia/siterenderer/DocumentContent
+
+add under <build> <plugins> below things
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			
+			
+Go to Window--> Preferences--> Java --> Editor--> Save Actions.
+Check the option Perform the selected actions on save".
+Check the option "Organize imports".
+
+
+Check Preferences / Java / Code Style / Code Template
+
+Section Comment / Type
+
+
+/**
+ * Copyright@2022 Kaushal Company, Inc. All rights reserved.
+ * @author kaushlender sharma
+ *
+ * ${tags}
+ */
+
+You can replace the author tag by whatever value you need and it will have an effect on new generated classes.\
+${user} uses the value of the user.name environment variable; therefore, you can pass -Duser.name=My Name in eclipse.ini to override it.
+For Mac users, eclipse.ini is in Eclipse.app/Contents/MacOS/ if you right click and go Show Package Contents
+
+
+formatter
+
+https://www.planetofbits.com/eclipse/create-share-eclipse-code-style-formatter/
+
+			
